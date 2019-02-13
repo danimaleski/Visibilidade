@@ -1,0 +1,44 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Carregador{
+	
+	public ArrayList<Filme> filmes;
+	public String arquivo;
+	public BufferedReader bufferedReader;
+
+	public Carregador(){
+		this.filmes = new ArrayList<Filme>();
+		this.arquivo = "filmes.csv";
+	}
+
+	public void carregar(){
+	 	try{
+		 	this.bufferedReader = new BufferedReader(new FileReader(this.arquivo));
+		}
+		catch(FileNotFoundException e){
+			e.printStackTrace();
+		}
+
+		try {
+		    StringBuilder sb = new StringBuilder();
+		    String linha = this.bufferedReader.readLine();
+
+		    while (linha != null) {
+		    	Filme f = new Filme();
+		    	f.transformarLinhaEmFilme(linha);
+		    	this.filmes.add(f);
+
+		        linha = this.bufferedReader.readLine();
+		    }
+
+		    bufferedReader.close();
+		}
+		catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+}
