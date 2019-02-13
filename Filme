@@ -1,0 +1,24 @@
+public class Filme{
+	private String titulo;
+	private String diretor;
+	private int duracao;
+	private int ano;
+
+	public Filme(){}
+	
+	public void transformarLinhaEmFilme(String linha){
+		String[] preFilme = linha.split(",");
+		this.titulo = preFilme[0];
+	 	this.duracao = Integer.parseInt(preFilme[1]);
+	 	this.diretor = preFilme[2];
+	  this.ano = Integer.parseInt(preFilme[3]);
+	  	}
+	  	
+	public void ImprimirFilme(){
+	  	System.out.println(this.titulo+" - "+this.diretor);
+	}
+	
+	public int getDuracao(){
+	  return this.duracao;
+	}
+}
